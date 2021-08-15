@@ -22,6 +22,26 @@ class VideoPlayer : RComponent<VideoPlayerProps, RState>() {
             h3 {
                 +"${props.video.speaker}: ${props.video.title}"
             }
+            styledDiv {
+                css {
+                    display = Display.flex
+                    marginBottom = 10.px
+                }
+                emailShareButton {
+                    attrs.url = props.video.videoUrl
+                    emailIcon {
+                        attrs.size = 32
+                        attrs.round = true
+                    }
+                }
+                telegramShareButton {
+                    attrs.url = props.video.videoUrl
+                    telegramIcon {
+                        attrs.size = 32
+                        attrs.round = true
+                    }
+                }
+            }
             styledButton {
                 css {
                     display = Display.block
@@ -34,15 +54,12 @@ class VideoPlayer : RComponent<VideoPlayerProps, RState>() {
                 }
                 if(props.unwatchedVideo) {
                     +"Mark as watched"
-                }
-                else {
+                } else {
                     +"Mark as unwatched"
                 }
             }
-            img {
-                attrs {
-                    src = "https://via.placeholder.com/640x360.png?text=Video+Player+Placeholder"
-                }
+            reactPlayer {
+                attrs.url = props.video.videoUrl
             }
         }
     }

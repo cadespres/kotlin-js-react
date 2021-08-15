@@ -1,21 +1,12 @@
-import kotlinx.browser.window
 import kotlinx.html.js.onClickFunction
 import react.*
 import react.dom.*
-
-data class Video(
-    val id: Int,
-    val title: String,
-    val speaker: String,
-    val url: String
-)
 
 external interface VideoListProps: RProps {
     var videos: List<Video>
     var selectedVideo: Video?
     var onSelectVideo: (Video) -> Unit
 }
-
 
 @JsExport
 class VideoList: RComponent<VideoListProps, RState>() {
